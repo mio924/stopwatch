@@ -70,8 +70,13 @@
 
         //在時刻を示すDate.nowを代入
         startTime = Date.now();
+        //ボタンを一回押した後、何度もスタートボタンを押せるとバグが起きるため、一回押すと再度押せないようにする
+        start.disabled = true;
+        
+        
 
         //再帰的に使えるように関数を作る
+        
         countUp();
     });
 
@@ -80,6 +85,8 @@
 
         //タイマーを止めるにはclearTimeoutを使う必要があり、そのためにはclearTimeoutの引数に渡すためのタイマーのidが必要
        clearTimeout(timerId);
+       //再度スタートを押せるようにする
+　　　　 start.disabled = false;
 
 
         //タイマーに表示される時間elapsedTimeが現在時刻かたスタートボタンを押した時刻を引いたものなので、
@@ -99,6 +106,6 @@
 
         //updateTimetTextで0になったタイムを表示
         updateTimetText();
-
+　　　　
     });
 })();
